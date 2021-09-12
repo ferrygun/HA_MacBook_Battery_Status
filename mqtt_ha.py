@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 # <xbar.title>Battery remaining (Python)</xbar.title>
 # <xbar.version>v1.0.0</xbar.version>
-# <xbar.author>Eric Ripa</xbar.author>
-# <xbar.author.github>eripa</xbar.author.github>
+# <xbar.author>Ferry Djaja/xbar.author>
+# <xbar.author.github>Ferry Djaja</xbar.author.github>
 # <xbar.desc>Show battery charge percentage and time remaining</xbar.desc>
 # <xbar.image>http://i.imgur.com/P6aNey5.png</xbar.image>
 # <xbar.dependencies>python</xbar.dependencies>
