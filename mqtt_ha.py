@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 # <xbar.title>Battery remaining (Python)</xbar.title>
 # <xbar.version>v1.0.0</xbar.version>
-# <xbar.author>Ferry Djaja</xbar.author>
-# <xbar.author.github>ferrydjaja</xbar.author.github>
+# <xbar.author>Eric Ripa</xbar.author>
+# <xbar.author.github>eripa</xbar.author.github>
 # <xbar.desc>Show battery charge percentage and time remaining</xbar.desc>
 # <xbar.image>http://i.imgur.com/P6aNey5.png</xbar.image>
 # <xbar.dependencies>python</xbar.dependencies>
@@ -22,7 +22,7 @@ port = 1883
 topic = "home/macbook/temperature"
 # generate client ID with pub prefix randomly
 client_id = f'python-mqtt-{random.randint(0, 1000)}'
-username = ''
+username = 'mqtt'
 password = ''
 
 
@@ -52,23 +52,8 @@ def parse_pmset():
         battery["remaining"] = "∞"
     return battery
 
-def main():
-    battery = parse_pmset()
-    refresh_interval = sys.argv[0].split('.')[1]
-    print("{}| size=12".format(battery["charge"]))
-    print(battery["charge"].replace('%', ''))
-    print("---")
-    print("Status: {}".format(battery["status"]))
-    print("Remaining: {}".format(battery["remaining"]))
-    print("Refresh (current interval: {}) | refresh=true".format(refresh_interval))
 
 def connect_mqtt():
-    #def on_connect(client, userdata, flags, rc):
-    #    if rc == 0:
-    #        print("Connected to MQTT Broker!")
-    #    else:
-    #        print("Failed to connect, return code %d\n", rc)
-
     client = mqtt_client.Client(client_id)
     client.username_pw_set(username, password)
     #client.on_connect = on_connect
@@ -83,11 +68,6 @@ def publish(client):
     battery = parse_pmset()
     refresh_interval = sys.argv[0].split('.')[1]
     print("{}| size=12".format(battery["charge"]))
-    #print(battery["charge"].replace('%', ''))
-    #print("---")
-    #print("Status: {}".format(battery["status"]))
-    #print("Remaining: {}".format(battery["remaining"]))
-    #print("Refresh (current interval: {}) | refresh=true".format(refresh_interval))
 
     msg = battery["charge"].replace('%', '')
 
